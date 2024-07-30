@@ -1,0 +1,62 @@
+.card {
+  height: 245.97px;
+  width: 172.5px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ccc;
+  overflow: hidden;
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% calc(100% - 12.86px),
+    calc(100% - 12.86px) 100%,
+    0 100%
+  );
+}
+
+@media (min-width: 769px) {
+  .card {
+    width: 188.57px;
+  }
+}
+
+.imageContainer {
+  height: 189.97px;
+  position: relative;
+}
+
+.image {
+  object-fit: cover;
+}
+
+.separator {
+  height: 5.38px;
+  width: 100%;
+  background-color: #ec1d24;
+  border: none;
+  margin: 0;
+}
+
+.infoContainer {
+  height: 56px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+  background-color: black;
+  color: white;
+}
+
+.characterName {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.link {
+  text-decoration: none;
+}
+
+.icon {
+  width: 12px;
+  height: 10.84px;
+}

@@ -1,0 +1,20 @@
+.nav {
+  display: flex;
+  padding: 2% 5%;
+  background: black;
+  justify-content: space-between;
+}
+
+.linkContainer {
+  display: flex;
+  align-items: center;
+}
+
+.favoritesContainer {
+  display: flex;
+  align-items: center;
+}
+
+.favNumber {
+  margin-left: 0.5em;
+}
