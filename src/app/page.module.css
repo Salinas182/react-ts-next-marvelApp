@@ -3,8 +3,14 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  min-height: 100vh;
   background-color: white;
+  padding: 0 24px;
+}
+
+@media (min-width: 769px) {
+  .main {
+    padding: 0 48px;
+  }
 }
 
 .code {

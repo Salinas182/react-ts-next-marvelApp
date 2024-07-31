@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { CharacterCard } from '../characterCard';
 import styles from './CharactersList.module.css';

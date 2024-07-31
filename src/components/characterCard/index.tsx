@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -10,7 +12,7 @@ interface Props {
   character: Character;
 }
 
-export async function CharacterCard({ character }: Props) {
+export function CharacterCard({ character }: Props) {
   if (!character) {
     return <></>;
   }
