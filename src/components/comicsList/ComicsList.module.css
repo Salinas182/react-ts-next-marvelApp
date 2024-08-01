@@ -1,0 +1,101 @@
+.comicsList {
+  display: flex;
+  overflow-x: auto;
+  gap: 16px;
+  padding-bottom: 16px;
+  padding-right: 16px;
+}
+
+.comicCard {
+  width: 164px;
+  height: 318px;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+
+.imageContainer {
+  width: 100%;
+  height: 246px;
+  position: relative;
+  margin-bottom: 12px;
+}
+
+.image {
+  object-fit: cover;
+}
+
+.comicInfo {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 4px 0;
+  box-sizing: border-box;
+  color: black;
+}
+
+.comicTitle {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.comicYear {
+  font-size: 12px;
+  font-weight: 400;
+}
+
+@media (min-width: 481px) and (max-width: 1024px) {
+  .comicsList {
+    gap: 16px;
+    padding-bottom: 16px;
+    padding-right: 48px;
+  }
+
+  .comicCard {
+    width: 168.53px;
+    height: 320.6px;
+  }
+
+  .imageContainer {
+    height: 252.79px;
+  }
+
+  .comicInfo {
+    height: 56.52px;
+  }
+
+  .comicTitle {
+    font-size: 15px;
+  }
+
+  .comicYear {
+    font-size: 11.29px;
+  }
+}
+
+@media (min-width: 1025px) {
+  .comicsList::-webkit-scrollbar {
+    height: 4px;
+  }
+
+  .comicsList::-webkit-scrollbar-track {
+    background: #d9d9d9;
+  }
+
+  .comicsList::-webkit-scrollbar-thumb {
+    background: var(--marvel-red);
+    width: 239.72px;
+  }
+
+  .comicCard {
+    width: 179.2px;
+    height: 340.8px;
+  }
+
+  .imageContainer {
+    height: 268.8px;
+  }
+}

@@ -32,7 +32,7 @@
 .separator {
   height: 5.38px;
   width: 100%;
-  background-color: #ec1d24;
+  background-color: var(--marvel-red);
   border: none;
   margin: 0;
 }

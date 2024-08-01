@@ -1,0 +1,133 @@
+.resumeContainer {
+  background-color: black;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  width: 100%;
+  height: 607.89px;
+  flex-direction: column;
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% calc(100% - 24px),
+    calc(100% - 24px) 100%,
+    0 100%
+  );
+}
+
+.imageContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.infoContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 24px 16px 48px 16px;
+  width: 100%;
+  box-sizing: border-box;
+  height: 210px;
+}
+
+.infoTopRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.name {
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.icon {
+  width: 24px;
+  height: 21.68px;
+}
+
+.description {
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.comicsContainer {
+  height: 467.5px;
+  width: 100%;
+  padding: 48px 0 0 16px;
+}
+
+.comicsTitle {
+  color: black;
+  font-weight: 700;
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+
+@media (min-width: 481px) and (max-width: 1024px) {
+  .resumeContainer {
+    height: 278px;
+    flex-direction: row;
+  }
+
+  .imageContainer {
+    width: 33.3%;
+    height: 278px;
+  }
+
+  .infoContainer {
+    width: 66.6%;
+    padding: 48px;
+  }
+
+  .comicsContainer {
+    height: 468.6px;
+    padding: 48px 0 0 48px;
+  }
+
+  .comicsTitle {
+    margin-bottom: 24px;
+  }
+}
+
+@media (min-width: 1025px) {
+  .resumeContainer {
+    height: 320px;
+    flex-direction: row;
+    padding: 0 20%;
+  }
+
+  .imageContainer {
+    width: 33.3%;
+  }
+
+  .infoContainer {
+    padding: 0 48px;
+    width: 66.6%;
+    height: 100%;
+  }
+
+  .name {
+    font-size: 40px;
+  }
+
+  .comicsContainer {
+    height: 526.8px;
+    padding: 48px 20%;
+  }
+
+  .comicsTitle {
+    font-size: 32px;
+    margin-bottom: 24px;
+  }
+}
