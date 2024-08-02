@@ -7,6 +7,7 @@ import styles from './CharacterCard.module.css';
 import selectedIcon from '@/assets/icons/selected.svg';
 import unselectedIcon from '@/assets/icons/unselected.svg';
 import { Character } from '@/entities/character';
+import useFavorites from '@/hooks/useFavorites';
 
 interface Props {
   character: Character;
@@ -18,6 +19,8 @@ export function CharacterCard({ character }: Props) {
   }
 
   const { thumbnail, name, id } = character;
+  const { favIds, updateFavIds } = useFavorites();
+  const isFavorite = favIds.find((favId) => favId === id);
 
   return (
     <div className={styles.card}>
@@ -41,11 +44,13 @@ export function CharacterCard({ character }: Props) {
           </Link>
         </span>
 
-        <Image
-          src={unselectedIcon}
-          alt="Mark or unmark as favorite"
-          className={styles.icon}
-        />
+        <button className={styles.favButton} onClick={() => updateFavIds(id)}>
+          <Image
+            src={isFavorite ? selectedIcon : unselectedIcon}
+            alt="Mark or unmark as favorite"
+            className={styles.icon}
+          />
+        </button>
       </div>
     </div>
   );

@@ -1,11 +1,16 @@
+'use client';
+
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import styles from './NavBar.module.css';
 import marvelLogo from '@/assets/logos/marvel.svg';
 import favoritesIcon from '@/assets/icons/Favorites.svg';
+import useFavorites from '@/hooks/useFavorites';
 
 export default function NavBar() {
+  const { favIds } = useFavorites();
+
   return (
     <nav className={styles.nav}>
       <div className={styles.linkContainer}>
@@ -15,7 +20,7 @@ export default function NavBar() {
       </div>
       <div className={styles.favoritesContainer}>
         <Image src={favoritesIcon} alt="Favorites icon" priority />
-        <span className={styles.favNumber}>3</span>
+        <span className={styles.favNumber}>{favIds.length}</span>
       </div>
     </nav>
   );
