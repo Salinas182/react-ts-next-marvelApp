@@ -19,8 +19,8 @@ export function CharacterCard({ character }: Props) {
   }
 
   const { thumbnail, name, id } = character;
-  const { favIds, updateFavIds } = useFavorites();
-  const isFavorite = favIds.find((favId) => favId === id);
+  const { favorites, updateFavorites } = useFavorites();
+  const isFavorite = favorites.find((favorite) => favorite.name === name);
 
   return (
     <div className={styles.card}>
@@ -44,7 +44,10 @@ export function CharacterCard({ character }: Props) {
           </Link>
         </span>
 
-        <button className={styles.favButton} onClick={() => updateFavIds(id)}>
+        <button
+          className={styles.favButton}
+          onClick={() => updateFavorites(character)}
+        >
           <Image
             src={isFavorite ? selectedIcon : unselectedIcon}
             alt="Mark or unmark as favorite"

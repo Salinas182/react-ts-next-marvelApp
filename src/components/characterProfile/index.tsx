@@ -21,9 +21,9 @@ export default function CharacterProfile({
     return <></>;
   }
 
-  const { favIds, updateFavIds } = useFavorites();
-  const { thumbnail, name, id } = character;
-  const isFavorite = favIds.find((favId) => favId === id);
+  const { favorites, updateFavorites } = useFavorites();
+  const { thumbnail, name } = character;
+  const isFavorite = favorites.find((favorite) => favorite.name === name);
 
   return (
     <>
@@ -45,7 +45,7 @@ export default function CharacterProfile({
 
             <button
               className={styles.favButton}
-              onClick={() => updateFavIds(id)}
+              onClick={() => updateFavorites(character)}
             >
               <Image
                 src={isFavorite ? selectedIcon : unselectedIcon}

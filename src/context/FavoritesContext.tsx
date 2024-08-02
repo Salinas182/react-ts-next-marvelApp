@@ -1,10 +1,18 @@
 'use client';
 
-import React, { createContext, useState } from 'react';
+import React, {
+  createContext,
+  Dispatch,
+  SetStateAction,
+  useState,
+} from 'react';
+import { Character } from '@/entities/character';
 
 interface IFavoritesContext {
-  favIds: number[];
-  updateFavIds: (id: number) => void;
+  favorites: Character[];
+  showFavorites: boolean;
+  updateFavorites: (character: Character) => void;
+  setShowFavorites: Dispatch<SetStateAction<boolean>>;
 }
 
 export const FavoritesContext = createContext<IFavoritesContext | undefined>(
@@ -12,16 +20,24 @@ export const FavoritesContext = createContext<IFavoritesContext | undefined>(
 );
 
 export function FavoritesProvider({ children }: { children: React.ReactNode }) {
-  const [favIds, setFavIds] = useState<number[]>([]);
-  const updateFavIds = (id: number) => {
-    const idFound = favIds.find((savedId) => savedId === id);
-    setFavIds(
-      idFound ? favIds.filter((savedId) => savedId !== id) : [...favIds, id]
+  const [favorites, setFavorites] = useState<Character[]>([]);
+  const [showFavorites, setShowFavorites] = useState<boolean>(false);
+  const updateFavorites = (character: Character) => {
+    const nameFound = favorites.find(
+      (favorite) => favorite.name === character.name
+    );
+
+    setFavorites(
+      nameFound
+        ? favorites.filter((favorite) => favorite.name !== character.name)
+        : [...favorites, character]
     );
   };
 
   return (
-    <FavoritesContext.Provider value={{ favIds, updateFavIds }}>
+    <FavoritesContext.Provider
+      value={{ favorites, showFavorites, setShowFavorites, updateFavorites }}
+    >
       {children}
     </FavoritesContext.Provider>
   );
