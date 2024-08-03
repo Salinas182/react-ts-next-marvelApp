@@ -57,6 +57,7 @@ export default function useCharacters({
     if (nameInput.trim() === '') {
       setCharacters(initialData.characters);
       setCount(initialData.count);
+      setLoading(false);
       return;
     }
 

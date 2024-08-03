@@ -1,12 +1,13 @@
-import { getYearFromDate, md5Hash } from "@/utils";
-import { createHash } from "crypto";
+import { getYearFromDate, md5Hash } from '@/utils';
+import { createHash } from 'crypto';
 
 describe('Utils', () => {
-
   describe('md5Hash', () => {
     it('receives a string and returns it hashed in MD5 format', () => {
       const stringToHash = 'mockString';
-      const expectedResult = createHash('md5').update(stringToHash).digest('hex');
+      const expectedResult = createHash('md5')
+        .update(stringToHash)
+        .digest('hex');
 
       const result = md5Hash(stringToHash);
 

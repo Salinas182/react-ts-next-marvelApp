@@ -7,6 +7,7 @@ import httpAdapter from '@/adapters/httpAdapter';
 import { MarvelGenericResponse } from '@/entities/marvel-db';
 import CharacterProfile from '@/components/characterProfile';
 import { Comic } from '@/entities/comic';
+import Spinner from '@/components/spinner';
 
 interface Props {
   params: {
@@ -19,11 +20,14 @@ const comicsToDisplay = 20;
 export default function CharacterDetails({ params: { id } }: Props) {
   const [character, setCharacter] = useState<Character>();
   const [comics, setComics] = useState<Comic[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     async function getCharacterInfo(id: number) {
       try {
+        setLoading(true);
+
         const { data: characterData } =
           await httpAdapter.get<MarvelGenericResponse>(
             `/v1/public/characters/${id}`
@@ -50,6 +54,8 @@ export default function CharacterDetails({ params: { id } }: Props) {
             ? error.response?.data
             : `Error fetching data for character ${id}`
         );
+      } finally {
+        setLoading(false);
       }
     }
 
@@ -62,7 +68,11 @@ export default function CharacterDetails({ params: { id } }: Props) {
 
   return (
     <>
+      {loading && <Spinner />}
+
       <CharacterProfile character={character} comics={comics} />
+
+      {error && <p>{error}</p>}
     </>
   );
 }

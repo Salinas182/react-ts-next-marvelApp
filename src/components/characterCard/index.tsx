@@ -13,7 +13,7 @@ interface Props {
   character: Character;
 }
 
-export function CharacterCard({ character }: Props) {
+export default function CharacterCard({ character }: Props) {
   if (!character) {
     return <></>;
   }

@@ -9,6 +9,7 @@ import { Character } from '@/entities/character';
 import searchIcon from '@/assets/icons/search.svg';
 import useDebounce from '@/hooks/useDebounce';
 import useFavorites from '@/hooks/useFavorites';
+import Spinner from '../spinner';
 
 interface Props {
   initialData: {
@@ -62,7 +63,7 @@ export default function SearchAndDisplay({ initialData }: Props) {
           {showFavorites ? favorites.length : count} RESULTS
         </span>
 
-        {loading && <p>Loading...</p>}
+        {loading && <Spinner />}
 
         {error && <p>{error}</p>}
       </div>

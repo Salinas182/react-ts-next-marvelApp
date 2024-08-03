@@ -13,7 +13,7 @@ export interface Comic {
   issn: string;
   format: string;
   pageCount: number;
-  textObjects: [];
+  textObjects: TextObjects[];
   resourceURI: string;
   urls: URL[];
   series: Series;
@@ -28,6 +28,12 @@ export interface Comic {
   characters: Characters;
   stories: Stories;
   events: Events;
+}
+
+export interface TextObjects {
+  type: string;
+  language: string;
+  text: string;
 }
 
 export interface Characters {
