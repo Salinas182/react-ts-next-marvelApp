@@ -31,7 +31,7 @@ describe('getInitialCharacters', () => {
     const result = await getInitialCharacters();
 
     expect(httpAdapter.get).toHaveBeenCalledWith('/v1/public/characters', {
-      limit: 10,
+      limit: 50,
       ts: expect.any(String),
       hash: mockHash,
     });
@@ -49,7 +49,7 @@ describe('getInitialCharacters', () => {
     const result = await getInitialCharacters();
 
     expect(httpAdapter.get).toHaveBeenCalledWith('/v1/public/characters', {
-      limit: 10,
+      limit: 50,
       ts: expect.any(String),
       hash: mockHash,
     });

@@ -24,16 +24,18 @@ export default function CharacterCard({ character }: Props) {
 
   return (
     <div className={styles.card}>
-      <div className={styles.imageContainer}>
-        <Image
-          src={`${thumbnail?.path}/standard_large.${thumbnail?.extension}`}
-          alt={`${name} thumbnail`}
-          className={styles.image}
-          sizes="(max-width: 768px) 172.5px, 188.57px"
-          fill
-          priority
-        />
-      </div>
+      <Link href={`/character/${id}`}>
+        <div className={styles.imageContainer}>
+          <Image
+            src={`${thumbnail?.path}/standard_large.${thumbnail?.extension}`}
+            alt={`${name} thumbnail`}
+            className={styles.image}
+            sizes="(max-width: 768px) 172.5px, 188.57px"
+            fill
+            priority
+          />
+        </div>
+      </Link>
 
       <hr className={styles.separator} />
 

@@ -8,7 +8,7 @@ export default async function getInitialCharacters() {
     const { data } = await httpAdapter.get<MarvelGenericResponse>(
       '/v1/public/characters',
       {
-        limit: 10,
+        limit: 50,
         ts: currentTimeString,
         hash: md5Hash(
           `${currentTimeString}${process.env.MARVEL_PRIVATE_KEY}${process.env.NEXT_PUBLIC_MARVEL_PUBLIC_KEY}`

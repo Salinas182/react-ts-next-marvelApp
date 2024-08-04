@@ -1,36 +1,94 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# react-ts-next-marvelApp
 
-## Getting Started
+To have the app running, a brief configuration must be done and some scripts must be run.
 
-First, run the development server:
+## Environment variables
+A '.env.local' file must be created inside the root directory. It must contain values for your Marvel public key ('NEXT_PUBLIC_MARVEL_PUBLIC_KEY') and your Marvel private key (MARVEL_PRIVATE_KEY) as well. Therefore, your '.env.local' file should look like this:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+`NEXT_PUBLIC_MARVEL_PUBLIC_KEY=yourPublicKeyHere`
+
+`MARVEL_PRIVATE_KEY=yourPrivateKeyHere`
+
+
+## Available Scripts
+
+Inside the root directory, you can run:
+
+### Development mode
+
+### `npm install`
+
+Installs all the necessary dependencies for the app to run correctly.
+
+### `npm run dev`
+
+Runs the app in development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+
+
+### Production mode
+
+### `npm install`
+
+Installs all the necessary dependencies for the app to run correctly.
+
+### `npm run build`
+
+Compiles and prepares your project for production deployment, optimizing code and resources.
+
+
+### `npm run start`
+
+Runs the app in production mode. You must previously build your app.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+
+### Other scripts
+
+### `npm run test`
+
+Runs all the existing tests.
+
+### `npm run lint`
+
+Runs ESLint on the project.
+
+## API Reference
+
+#### Fetches Marvel characters
+
+```http
+  GET /v1/public/characters
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+#### Fetches a single Marvel character by their ID
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```http
+  GET /v1/public/characters/{characterId}
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+#### Fetches a Marvel character's comics by their ID
 
-## Learn More
+```http
+  GET /v1/public/characters/{characterId}/comics
+```
 
-To learn more about Next.js, take a look at the following resources:
+### Improvement possibilities
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+If this project was going to grow in time, some improvements could be made, for instance: 
+- Give the user the chance to register and login.
+- Use a database in order to save the users' favorite characters.
+- As it is working with an external API, it might be a good idea to make use of the Mapper Pattern to map their data and create our own interface. In this way, if the Marvel developers decide to rename any of their data properties, only our own interface would need to be modified, instead of every single API call.
+- Create more and better tests.
+- Add i18n to support different languages.
+- Maybe try to find a different API to improve the user experience, as the current API takes too long to provide the app with data.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Technical decisions taken and reasons
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- I decided to make use of the Adapter Pattern to encapsulate the API calls. In this way, if I wanted to use an alternative to Axios for HTTP calls, that would not be a challenge or break the app, only the adapter would need to be modified. 
+- Taking into account that, every time the app is launched, the same 50 characters must be shown, I decided to use Server Side Rendering in that case, to avoid unnecessary calls to the API if the user gets back to the main page.
+- Due to the long time the API takes to deliver a response, I felt it was almost mandatory to include a spinner to let the user know that the website is loading, so I did it.
+- I have tried to create as many components as it made sense in order to make the app scalable and make the views have as less logic inside as possible, being the latter just in charge of displaying components.
+- I have used CSS var only in cases where it made sense, like the Marvel red color, as I was going to use it in different files.
+- As I was running out of time, I decided to create tests only for the most critical files, such as the HTTP Adapter, the custom hooks, the utils file or some components as example.
+- This was my first time using Figma and I tried to do my best, but I am aware mistakes could have been made on my end. In order to make the app responsive, since the devices models or measures were not provided -or I was not able to find them-, I have tried to make every view as similar as possible to the examples but, depending on the device used, the looks may be different. While developing, I have taken the following device models as examples: iPad Mini for tablet designs and iPhone 12 Pro for the smartphone ones.
+- Last, but not least, I decided to deploy the app in Netlify, even though it does not run as well as in local mode, probably due to the API and the 50 characters required in the initial load, since running it locally and with less characters I found no problem other than the loading times. If it initially does not show any results, searches can be done and then the deployed app will work normally. You can find it here: https://react-ts-next-marvel.netlify.app/

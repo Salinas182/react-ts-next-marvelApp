@@ -24,6 +24,9 @@ export default function RootLayout({
           <NavBar />
           {children}
         </FavoritesProvider>
+        <span style={{ color: 'black', fontSize: '0.5em', display:'flex', justifyContent:'center', paddingTop: '5em' }}>
+          Data provided by Marvel. © 2014 Marvel
+        </span>
       </body>
     </html>
   );

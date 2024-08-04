@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import styles from './NavBar.module.css';
 import marvelLogo from '@/assets/logos/marvel.svg';
-import favoritesIcon from '@/assets/icons/Favorites.svg';
+import favoritesIcon from '@/assets/icons/favorites.svg';
 import useFavorites from '@/hooks/useFavorites';
 
 export default function NavBar() {
@@ -15,7 +15,7 @@ export default function NavBar() {
     <nav className={styles.nav}>
       <div className={styles.linkContainer}>
         <Link href="/" onClick={() => setShowFavorites(false)}>
-          <Image src={marvelLogo} alt="Home link" />
+          <Image src={marvelLogo} alt="Home link" priority />
         </Link>
       </div>
 
