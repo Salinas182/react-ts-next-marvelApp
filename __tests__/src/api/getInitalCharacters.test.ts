@@ -21,7 +21,7 @@ describe('getInitialCharacters', () => {
     jest.resetAllMocks();
   });
 
-  it('gets the 50 first characters from the Marvel API', async () => {
+  it('gets the 20 first characters from the Marvel API', async () => {
     const mockHash = 'mockHash';
     (httpAdapter.get as jest.Mock).mockResolvedValue({
       data: charactersResponse,
@@ -31,7 +31,7 @@ describe('getInitialCharacters', () => {
     const result = await getInitialCharacters();
 
     expect(httpAdapter.get).toHaveBeenCalledWith('/v1/public/characters', {
-      limit: 50,
+      limit: 20,
       ts: expect.any(String),
       hash: mockHash,
     });
@@ -49,7 +49,7 @@ describe('getInitialCharacters', () => {
     const result = await getInitialCharacters();
 
     expect(httpAdapter.get).toHaveBeenCalledWith('/v1/public/characters', {
-      limit: 50,
+      limit: 20,
       ts: expect.any(String),
       hash: mockHash,
     });
